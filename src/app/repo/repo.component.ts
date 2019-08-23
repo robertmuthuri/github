@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RepoHttpServiceService } from '../services/repo-http-service.service';
+
 
 @Component({
   selector: 'app-repo',
@@ -7,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public repoHttpServiceService: RepoHttpServiceService) { }
 
   ngOnInit() {
   }
 
   searchRepo(searchTerm) {
     console.log(searchTerm);
+    this.repoHttpServiceService.searchRepos(searchTerm);
   }
 
 }
