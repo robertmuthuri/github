@@ -11,6 +11,7 @@ import { RepoComponent } from './repo/repo.component';
 import { RepoNavbarComponent } from './repo-navbar/repo-navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RepoSearchComponent } from './repo-search/repo-search.component';
+import { RepoClassComponent } from './repo-class/repo-class.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RepoSearchComponent } from './repo-search/repo-search.component';
     RepoComponent,
     RepoNavbarComponent,
     NotFoundComponent,
-    RepoSearchComponent
+    RepoSearchComponent,
+    RepoClassComponent
   ],
   imports: [
     BrowserModule,
