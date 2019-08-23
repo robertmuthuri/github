@@ -12,4 +12,8 @@ export class RepoComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchRepo(searchTerm) {
+    console.log(searchTerm);
+  }
+
 }
