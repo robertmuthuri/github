@@ -9,13 +9,13 @@ import { UserClass } from '../user-class';
 })
 export class UsersHttpServiceService {
   user: UserClass;
-  repo: RepoClass;
+  repos: RepoClass;
 
   constructor(private http: HttpClient) {
 
     this.user = new UserClass(0, '', '');
 
-    this.repo = new RepoClass('', '', '', new Date());
+    this.repos = new RepoClass('', '', '', new Date());
 
   }
 
@@ -40,12 +40,6 @@ export class UsersHttpServiceService {
           console.log(results);
           this.user = results;
           console.log(this.user);
-          // this.user.id = results.id;
-          // console.log(this.user.id);
-          // this.user.name = results.login;
-          // console.log(this.user.name);
-          // this.user.repoURL = results.avatar_url;
-          // console.log(this.user.repoURL);
 
           resolve();
         },
@@ -60,19 +54,27 @@ export class UsersHttpServiceService {
 
   getRepos(searchTerm) {
 
+    interface ApiResponse {
+     name: string;
+     description: string;
+     html_url: string;
+     created_at: Date;
+    }
+
     let searchPoint = 'https://api.github.com/users/' + searchTerm + '/repos?access_token=' + environment.RepoAPIKey;
 
     let promise = new Promise((resolve, reject) => {
-      this.http.get(searchPoint).toPromise().then(
-        (results) => {
-          console.log(results);
+      this.http.get<ApiResponse>(searchPoint).toPromise().then(
+        (repoResults) => {
+          console.log(repoResults);
+          this.repos = repoResults;
           resolve();
         },
         (error) => {
           console.log(error);
           reject();
         }
-      ):
+      );
     });
     return promise;
   }
