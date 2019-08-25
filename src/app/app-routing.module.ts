@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RepoComponent } from './repo/repo.component';
+import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 

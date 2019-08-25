@@ -26,7 +26,6 @@ export class UserComponent implements OnInit {
       );
     }
 
-  ngOnInit() {this.searchUser( 'robertmuthuri'); }
-
+  ngOnInit() { this.searchUser( 'robertmuthuri'); }
 
 }

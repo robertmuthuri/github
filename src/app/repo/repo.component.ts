@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RepoHttpServiceService } from '../services/repo-http-service.service';
+// import { RepoHttpServiceService } from '../services/repo-http-service.service';
+import {UsersHttpServiceService} from '../services/users-http-service.service';
+import {UserClass} from '../user-class';
 
 
 @Component({
@@ -9,14 +11,23 @@ import { RepoHttpServiceService } from '../services/repo-http-service.service';
 })
 export class RepoComponent implements OnInit {
 
-  constructor(public repoHttpServiceService: RepoHttpServiceService) { }
+  users: UserClass;
 
-  ngOnInit() {
+  constructor(public userHttpService: UsersHttpServiceService) { }
+
+
+  searchUser(searchTerm) {
+
+    this.userHttpService.searchUsers(searchTerm).then(
+      (success) => {
+        this.users = this.userHttpService.user;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  // searchRepo(searchTerm) {
-  //   console.log(searchTerm);
-  //   this.repoHttpServiceService.searchRepos(searchTerm);
-  // }
+  ngOnInit() { this.searchUser( 'robertmuthuri'); }
 
 }

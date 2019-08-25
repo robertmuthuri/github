@@ -15,6 +15,7 @@ export class UsersHttpServiceService {
     this.user = new UserClass(0, '', '');
 
   }
+
   searchUsers(searchTerm: string) {
 
     console.log(searchTerm);
@@ -52,6 +53,9 @@ export class UsersHttpServiceService {
       );
     });
     return promise;
+  }
+
+  getRepos(searchTerm) {
 
   }
 }
