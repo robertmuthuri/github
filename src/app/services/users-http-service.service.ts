@@ -8,7 +8,7 @@ import { UserClass } from '../user-class';
   providedIn: 'root'
 })
 export class UsersHttpServiceService {
-  user: ApiResponse;
+  user: UserClass;
 
   constructor(private http: HttpClient) {
 
