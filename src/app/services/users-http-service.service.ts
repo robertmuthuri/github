@@ -9,13 +9,13 @@ import { UserClass } from '../user-class';
 })
 export class UsersHttpServiceService {
   user: UserClass;
-  repos: RepoClass;
+  repos: RepoClass[] = [];
 
   constructor(private http: HttpClient) {
 
     this.user = new UserClass(0, '', '');
 
-    this.repos = new RepoClass('', '', '', new Date());
+    // this.repos = new RepoClass('', '', '', new Date());
 
   }
 
@@ -64,10 +64,18 @@ export class UsersHttpServiceService {
     let searchPoint = 'https://api.github.com/users/' + searchTerm + '/repos?access_token=' + environment.RepoAPIKey;
 
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(searchPoint).toPromise().then(
+      this.http.get<ApiResponse[]>(searchPoint).toPromise().then(
         (repoResults) => {
           console.log(repoResults);
-          this.repos = repoResults;
+
+          this.repos = [];
+          // console.log(this.repos);
+
+          for (let i = 0; i < repoResults.length; i++) {
+            let repo = new RepoClass(repoResults[i].name, repoResults[i].description, repoResults[i].html_url, repoResults[i].created_at);
+            this.repos.push(repo);
+          }
+          console.log(this.repos);
           resolve();
         },
         (error) => {

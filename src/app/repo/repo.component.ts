@@ -13,7 +13,7 @@ import {RepoClass} from '../repo-class';
 export class RepoComponent implements OnInit {
 
   users: UserClass;
-  repos: RepoClass;
+  repos: RepoClass[] = [];
 
   constructor(public userHttpService: UsersHttpServiceService) { }
 
@@ -36,8 +36,9 @@ export class RepoComponent implements OnInit {
 
   getRepos(searchTerm) {
     this.userHttpService.getRepos(searchTerm).then(
-      () => {
+      (results) => {
         this.repos = this.userHttpService.repos;
+        console.log(this.repos);
     },
     (error) => {
         console.log(error);
