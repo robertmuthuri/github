@@ -17,6 +17,10 @@ export class RepoComponent implements OnInit {
 
   constructor(public userHttpService: UsersHttpServiceService) { }
 
+  ngOnInit() {
+    this.searchUser( 'robertmuthuri');
+    this.getRepos('robertmuthuri');
+  }
 
   searchUser(searchTerm) {
 
@@ -38,9 +42,8 @@ export class RepoComponent implements OnInit {
     (error) => {
         console.log(error);
     }
-    )
+    );
   }
 
-  ngOnInit() { this.searchUser( 'robertmuthuri'); }
 
 }
