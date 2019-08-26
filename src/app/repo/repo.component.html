@@ -2,13 +2,14 @@
   <app-repo-search (emitSearch)="searchUser($event)" (emitSearch)="getRepos($event)"></app-repo-search>
    <div class="card">
      <div class="card-body">
-       <h5 class="card-title">Username: {{users.login}}</h5>
+       <h5 class="card-title"> User: {{users.login}}</h5>
        <img class="card-img-top product-image" src="{{users.avatar_url}}" alt="User's avatar">
        <p class="card-text">User ID: {{users.id}}</p>
      </div>
   </div>
   
   <div *ngIf="repos">
+      <h3>Repos</h3>
     <div class="card-columns">
       <div *ngFor="let repo of repos">
         <div class="card">
@@ -21,6 +22,7 @@
             <h5 class="mb-0 pb-3 pt-2"> {{repo.description}} </h5>
             
             <h6 class="mb-0 pb-3 pt-2"> {{repo.html_url}} </h6>
+            <h6 class="mb-0 pb-3 pt-2"> {{repo.created_at}} </h6>
           </div>
       </div>
     </div>

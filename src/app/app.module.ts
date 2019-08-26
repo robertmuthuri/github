@@ -15,6 +15,7 @@ import { UserComponent } from './user/user.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { DateFormatPipe } from './date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     NotFoundComponent,
     RepoSearchComponent,
     UserComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,
